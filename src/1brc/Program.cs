@@ -33,7 +33,7 @@ await foreach (var line in File.ReadLinesAsync(filePath, Encoding.UTF8, Cancella
         {
             Count = 1,
             Min = measurement.Value,
-            Mean = measurement.Value,
+            Sum = measurement.Value,
             Max = measurement.Value
         });
     }
@@ -46,7 +46,7 @@ await foreach (var line in File.ReadLinesAsync(filePath, Encoding.UTF8, Cancella
                 calculation.Min = measurement.Value;
             if (measurement.Value > calculation.Max)
                 calculation.Max = measurement.Value;
-            calculation.Mean = Math.Round((calculation.Mean + measurement.Value) / calculation.Count, digits: 1, mode: MidpointRounding.AwayFromZero);
+            calculation.Sum += measurement.Value;
         }
         else
         {
@@ -97,20 +97,19 @@ internal readonly struct Measurement
     }
 }
 
-[DebuggerDisplay("{Min}/{Mean}/{Max}")]
 internal class Calculation
 {
     public int Count;
 
     public double Min;
 
-    public double Mean;
+    public double Sum;
 
     public double Max;
 
     public override string ToString()
     {
-        return $"{Min}/{Mean}/{Max}";
+        return $"{Min}/{Math.Round(Sum / Count, 1, MidpointRounding.ToZero)}/{Max}";
     }
 }
 
