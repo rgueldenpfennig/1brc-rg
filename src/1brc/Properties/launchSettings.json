@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "1brc": {
+      "commandName": "Project",
+      "commandLineArgs": "--filePath Samples/measurements-1K.txt"
+    }
+  }
+}
