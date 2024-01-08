@@ -8,6 +8,6 @@
 ## Single Threaded
 First quick draft without any heavy optimization.
 
-Duration: 00:06:06.1497531
+Duration: 00:08:27.6627866
 
-Commit hash: 761170e57a4570a2dbea336cb812119d38b404e9
+Commit hash: 0fbbcd511cc86550b38e07bd1db2a9a8fa9ed8d8
